@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125080559) do
+ActiveRecord::Schema.define(version: 20161202080334) do
 
   create_table "diaries", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20161125080559) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "diary_id"
+    t.index ["diary_id"], name: "index_entries_on_diary_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,7 +44,9 @@ ActiveRecord::Schema.define(version: 20161125080559) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "diary_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["diary_id"], name: "index_users_on_diary_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

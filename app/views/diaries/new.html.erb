@@ -1,2 +1,4 @@
-<h1>Diaries#new</h1>
-<p>Find me in app/views/diaries/new.html.erb</p>
+<%= form_for @diary, url: {action: "create"}, html: {class: "diary_form"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create" %>
+<% end %>
