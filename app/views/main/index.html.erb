@@ -1,8 +1,11 @@
 <nav>
-  <li><a href="/users/sign_up">Login</a></li>
-  <li><a href="/users/sign_in">Register</a></li>
-  <!-- <li><a href="/users/sign_out">Logout</a></li> -->
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% if  user_signed_in? %>
+    <li><%= link_to 'Your diary', diary_path(current_user.diary_id) %></li>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <li><%= link_to 'Login', user_session_path  %></li>
+    <li><%= link_to 'Register', new_user_registration_path %></li>
+  <% end %>
 </nav>
 <h1>This will be couples diary app!</h1>
 <p>Find me for better styling in app/views/main/index.html.erb</p>
