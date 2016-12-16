@@ -1,2 +1,6 @@
-<h1>Diaries#index</h1>
-<p>Find me in app/views/diaries/index.html.erb</p>
+<h1>All diaries</h1>
+<ul class="diaries">
+  <% @diaries.each do |diary| %>
+    <h3><%= link_to diary.name, diary %></h3>
+  <% end %>
+</ul>

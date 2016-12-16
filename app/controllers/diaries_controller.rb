@@ -1,9 +1,11 @@
 class DiariesController < ApplicationController
+
   def new
     @diary = Diary.new
   end
 
   def create
+
     @diary = Diary.new(diary_params)
     if @diary.save
       flash[:success] = "Diary created!"
@@ -23,13 +25,15 @@ class DiariesController < ApplicationController
   end
 
   def index
+    @diaries = Diary.all
   end
 
   def show
+    @diary = Diary.find(params[:id])
   end
 
   private
-  
+
   def diary_params
     params.require(:diary).permit(:name)
   end
