@@ -1,6 +1,10 @@
 <nav>
   <% if  user_signed_in? %>
-    <li><%= link_to 'Your diary', diary_path(current_user.diary_id) %></li>
+    <% if current_user.diary_id.present? %>
+      <li><%= link_to 'Your diary', diary_path(current_user.diary_id) %></li>
+    <% else %>
+      <li><%= link_to 'Create a diary', new_diary_path %></li>
+    <% end %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
   <% else %>
     <li><%= link_to 'Login', user_session_path  %></li>

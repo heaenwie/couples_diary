@@ -30,12 +30,11 @@ class DiariesController < ApplicationController
   end
 
   def show
-    if current_user.diary_id.present? && params[:id] == current_user.diary_id
+    if params[:id].to_i == current_user.diary_id
       @diary = Diary.find(params[:id])
-    elsif current_user.diary_id.present? &&  params[:id] != current_user.diary_id
-      redirect_to diary_path(current_user.diary_id)
     else
-      redirect_to new_diary_path
+      flash[:warning] = "nonononono ACCESS"
+      redirect_to root_url
     end
   end
 
